@@ -27,6 +27,7 @@ enum class BackgroundColor : int {
 
 void Wordl();
 string GetWord();
+bool CheckGuess(string guess);
 int main()
 {
     Wordl();
@@ -59,9 +60,9 @@ void Wordl()
             cin >> input;
             tries++;
 
-            if (input.length() != word.length())
+            if (input.length() != word.length() || CheckGuess(input) == false)
             {
-                cout << "5 letters required" << endl;
+                cout << "Invalid word." << endl;
             }
             else
             {
@@ -133,4 +134,22 @@ string GetWord()
     wordlist.close();
 
     return word;
+}
+
+bool CheckGuess(string guess)
+{
+    string word;
+
+    ifstream wordlist("words.txt");
+    for (int x = 1; x < 8598; x++)
+    {
+        getline(wordlist, word);
+        if (word == guess)
+        {
+            wordlist.close();
+            return true;
+        }
+    }
+    wordlist.close();
+    return false;
 }
