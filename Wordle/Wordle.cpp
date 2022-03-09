@@ -46,8 +46,7 @@ void Wordl()
         int tries = 0;
 
         system("cls");
-        cout << "Guess the 5 letter word.\|\n-------------------------" << endl;
-        //cout << BACKGROUND(BackgroundColor::Grey, "  ");
+        cout << "Guess the 5 letter word.\|" << "(" << word << ")" << "\n------------------------- " << endl;
         bool correct = false;
         while (!correct)
         {
@@ -58,7 +57,12 @@ void Wordl()
             }
 
             cin >> input;
-            tries++;
+
+            for (int x = 0; x < word.length(); x++)
+            {
+                input[x] = toupper(input[x]);
+                word[x] = toupper(word[x]);
+            }
 
             if (input.length() != word.length() || CheckGuess(input) == false)
             {
@@ -66,12 +70,7 @@ void Wordl()
             }
             else
             {
-                for (int x = 0; x < word.length(); x++)
-                {
-                    input[x] = toupper(input[x]);
-                    word[x] = toupper(word[x]);
-                }
-
+                tries++;
                 if (input == word)
                 {
                     cout << BACKGROUND(BackgroundColor::Green, input);
