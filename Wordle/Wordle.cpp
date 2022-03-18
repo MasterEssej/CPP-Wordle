@@ -28,6 +28,7 @@ enum class BackgroundColor : int {
 void Wordl();
 string GetWord();
 bool CheckGuess(string guess);
+
 int main()
 {
     Wordl();
@@ -47,6 +48,7 @@ void Wordl()
 
         system("cls");
         cout << "Guess the 5 letter word.\|" << "(" << word << ")" << "\n------------------------- " << endl;
+
         bool correct = false;
         while (!correct)
         {
@@ -101,6 +103,7 @@ void Wordl()
                 cout << endl;
             }
         }
+
         int choice;
         cout << "\nPlay again? (1/2)\n1.Yes\n2.No" << endl;
         while (true)
@@ -116,6 +119,7 @@ void Wordl()
                 break;
             }
         }
+
     }
 }
 
@@ -150,5 +154,6 @@ bool CheckGuess(string guess)
         }
     }
     wordlist.close();
+
     return false;
 }
