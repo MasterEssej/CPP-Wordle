@@ -27,7 +27,7 @@ enum class BackgroundColor : int {
 
 void Wordl();
 string GetWord();
-bool CheckGuess(string guess);
+bool CheckGuess(string guess); // feedback: argument here could be a string reference
 
 int main()
 {
@@ -127,7 +127,8 @@ string GetWord()
 {
     string word;
     srand(time(NULL));
-    int random = rand() % 8598 + 1;
+    int random = rand() % 8598 + 1; //feedback: its ok to rely on the assignemnt description about the size of the file being exactly 8598,
+                                    // however it would be beneficial to make sure this program works correctly with arbitrary file size.
 
     ifstream wordlist("words.txt");
     for (int x = 1; x < random; x++)
